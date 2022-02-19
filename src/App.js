@@ -1,25 +1,56 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import Home from '../src/pages/Home/index'
+import Username from '../src/pages/Username/index'
+import ErrorPage from './pages/Error'
+import { Route, Routes } from 'react-router-dom'
+import PrivateRoute from './Routes/PrivateRoute'
+import PublicRoute from './Routes/PublicRoute'
+import AppWrapper from '../src/components/AppWrapper/index'
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <AppWrapper p={3}>
+      <Routes>
+        <Route exact path="/"
+          element=
+          {
+            <PublicRoute>
+              <Username />
+            </PublicRoute>
+          }
+        />
+
+        <Route exact path="/app"
+          element=
+          {
+            <PrivateRoute>
+              <Home />
+            </PrivateRoute>
+          }
+        />
+
+        <Route exact path="app/result"
+          element=
+          {
+            <PrivateRoute>
+              <div className="result">
+                Teste
+              </div>
+            </PrivateRoute>
+          }
+        />
+
+
+        <Route
+          path="*"
+          element=
+          {
+            <ErrorPage />
+          }
+        />
+      </Routes>
+    </AppWrapper>
+  )
 }
 
 export default App;
