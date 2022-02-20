@@ -5,9 +5,21 @@ import { mode } from "@chakra-ui/theme-tools"
 const theme = extendTheme({
   styles: {
     global: (props) => ({
-      body: {
+      'body, html': {
         bg: mode('white', 'white')(props),
-        textDecoration: 'none'
+        textDecoration: 'none',
+        '&::-webkit-scrollbar': {
+          width: '4px',
+        },
+        '&::-webkit-scrollbar-track': {
+          width: '6px',
+          background: '#B8B8B8',
+          borderRadius: '30px'
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: "gray.100",
+          borderRadius: '30px',
+        },
       },
     }),
   },

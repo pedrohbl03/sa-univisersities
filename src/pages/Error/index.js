@@ -24,7 +24,7 @@ const ErrorPage = () => {
     <>
       <Box pb={10}>
         <Text textAlign="center">
-          Your are redirect in {time.toString()} seconds.
+          You will be redirect in {time.toString()} seconds.
         </Text>
       </Box>
       <Flex alignItems="center" justifyContent="center" flexDirection="column">

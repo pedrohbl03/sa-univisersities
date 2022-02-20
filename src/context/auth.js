@@ -9,8 +9,10 @@ export const AuthProvider = ({ children, ...props })  => {
     username: localStorage.getItem('username')
   })
 
+  const [favorites, setFavorites] = useState(JSON.parse(localStorage.getItem('favoriteUniversities')) || [])
+
   return (
-    <AuthContext.Provider value={{ user, setUser }}>
+    <AuthContext.Provider value={{ user, setUser, favorites, setFavorites }}>
       { children }
     </AuthContext.Provider>
   )

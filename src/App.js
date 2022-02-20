@@ -3,15 +3,18 @@ import Home from '../src/pages/Home/index'
 import Username from '../src/pages/Username/index'
 import ErrorPage from './pages/Error'
 import { Route, Routes } from 'react-router-dom'
-import PrivateRoute from './Routes/PrivateRoute'
-import PublicRoute from './Routes/PublicRoute'
+import PrivateRoute from './routes/PrivateRoute'
+import PublicRoute from './routes/PublicRoute'
 import AppWrapper from '../src/components/AppWrapper/index'
+import Result from '../src/pages/Result/index'
 
 const App = () => {
   return (
     <AppWrapper p={3}>
       <Routes>
-        <Route exact path="/"
+        <Route
+          exact
+          path="/"
           element=
           {
             <PublicRoute>
@@ -20,7 +23,9 @@ const App = () => {
           }
         />
 
-        <Route exact path="/app"
+        <Route
+          exact
+          path="/app"
           element=
           {
             <PrivateRoute>
@@ -29,17 +34,16 @@ const App = () => {
           }
         />
 
-        <Route exact path="app/result"
+        <Route
+          exact
+          path="/app/result/:country"
           element=
           {
             <PrivateRoute>
-              <div className="result">
-                Teste
-              </div>
+              <Result />
             </PrivateRoute>
           }
         />
-
 
         <Route
           path="*"

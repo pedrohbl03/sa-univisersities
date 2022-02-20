@@ -1,6 +1,6 @@
 import React from 'react'
 import { AuthContext } from '../../context/auth'
-import { Box, Text } from '@chakra-ui/react'
+import { Flex, Box, Text } from '@chakra-ui/react'
 import Card from '../../components/Card/index'
 import SectionFavorite from './SectionFavorite'
 
@@ -10,11 +10,11 @@ const Header = ({ ...props }) => {
 
   return (
     <Box {...props} w="100%">
-      <Box pb={10}>
+      <Flex pb={10}>
         <Text fontSize="xl" fontWeight="bold">
           Hello, {user.username}!
         </Text>
-      </Box>
+      </Flex>
       <Box>
         <Card>
           <SectionFavorite />
