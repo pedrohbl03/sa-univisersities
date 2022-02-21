@@ -1,24 +1,30 @@
 import React from 'react'
-import { Box, Flex, Image, Text, Heading, Button, Input, InputGroup, InputLeftElement } from '@chakra-ui/react'
+import { Box, Flex, Image, Text, Heading, Breadcrumb, BreadcrumbItem, BreadcrumbLink } from '@chakra-ui/react'
 import Card from '../../components/Card'
-import { useNavigate } from 'react-router-dom'
-import { TiArrowBack } from 'react-icons/ti'
-import { FiSearch } from 'react-icons/fi'
+
 
 const Header = ({ country, ...props }) => {
 
-  const navigate = useNavigate();
-
   const countryFlag = `https://countryflagsapi.com/png/${country.toLowerCase()}`
-
-  const countryUniversities = localStorage.getItem(`${country}` + 'Universities')
+  const countryUniversities = localStorage.getItem(`${country}Universities`)
 
   return (
     <Box mb={10}>
       <Flex pb={5}>
-        <Button leftIcon={<TiArrowBack />} onClick={() => navigate('/')} bg="transparent">
-          Back
-        </Button>
+
+        <Breadcrumb>
+          <BreadcrumbItem>
+            <BreadcrumbLink href='/app'>HOME</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem>
+            <BreadcrumbLink href='/app'>RESULT</BreadcrumbLink>
+          </BreadcrumbItem>
+
+          <BreadcrumbItem isCurrentPage>
+            <BreadcrumbLink href={`/app/result/${country}`}>{country.toUpperCase()}</BreadcrumbLink>
+          </BreadcrumbItem>
+        </Breadcrumb>
       </Flex>
       <Flex alignItems="center" justifyContent="space-between">
         <Card maxW="250">
@@ -32,15 +38,6 @@ const Header = ({ country, ...props }) => {
             </Box>
           </Flex>
         </Card>
-        <Box>
-          <InputGroup>
-            <InputLeftElement
-              pointerEvents='none'
-              children={<FiSearch/>}
-            />
-            <Input type='tel' placeholder='Search a university' />
-          </InputGroup>
-        </Box>
       </Flex>
     </Box>
   )

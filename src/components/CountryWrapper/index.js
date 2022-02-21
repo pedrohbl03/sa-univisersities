@@ -6,7 +6,7 @@ import { useNavigate } from 'react-router-dom'
 const CountryWrapper = ({ country, ...props }) => {
 
   const countryFlag = `https://countryflagsapi.com/png/${country.name.toLowerCase().split(',')}`
-  const countryUniversities = localStorage.getItem(`${country.name}` + 'Universities')
+  const countryUniversities = localStorage.getItem(`${country.name}Universities`)
   const navigate = useNavigate();
 
   const onClick = async () => {
@@ -14,7 +14,7 @@ const CountryWrapper = ({ country, ...props }) => {
 
     if (!countryUniversities) {
       const newParse = await response.map((university, key) => university = { id: key, ...university })
-      localStorage.setItem(`${country.name}` + 'Universities', JSON.stringify(newParse))
+      localStorage.setItem(`${country.name}Universities`, JSON.stringify(newParse))
     }
 
     navigate(`/app/result/${country.name.toLowerCase()}`)
