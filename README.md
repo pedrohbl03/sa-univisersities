@@ -19,4 +19,4 @@ After, the project will be ready to start (npm start).
 
 # Development by
 
-[https://github.com/pedrohbl03](@pedrohbl03)
+[@pedrohbl03](https://github.com/pedrohbl03)
