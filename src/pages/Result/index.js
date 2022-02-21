@@ -10,7 +10,7 @@ const Result = () => {
 
   let { country } = useParams()
   const universities = JSON.parse(localStorage.getItem(`${country}Universities`))
-  const [filter, setFilter] = useState ('')
+  const [search, setSearch] = useState('')
 
   return (
     <>
@@ -20,27 +20,35 @@ const Result = () => {
           <InputGroup mb={[5, 5, 0]}>
             <InputLeftElement
               pointerEvents='none'
-              children={<FiSearch/>}
+              children={<FiSearch />}
             />
-            <Input type='tel' placeholder='Search a university' onChange={(e) => setFilter(e.target.value)} />
+            <Input type='tel' placeholder='Search a university' onChange={(e) => setSearch(e.target.value)} />
           </InputGroup>
         </Box>
       </Flex>
       <Box overflow="auto" maxW="100%">
-      <TableWrapper>
-        {
-          universities
-          .sort((a, b) => a.name.localeCompare(b.name))
-          .filter((university) => (filter === '') ? university : (university.name.toLowerCase().includes(filter.toLowerCase())) && university)
-          .map((university, index) => {
-            return (
-              <React.Fragment key={index}>
-                <Item university={university} country={country} />
-              </React.Fragment>
-            )
-          })
-        }
-      </TableWrapper>
+        <TableWrapper>
+          {
+            universities
+              .sort((a, b) => a.name.localeCompare(b.name))
+              .filter((university) => {
+                if (
+                  search === ""
+                  || university.name.toLowerCase().includes(search.toLowerCase())
+                  || (university["state-province"] && university["state-province"].toLowerCase().includes(search.toLowerCase()))
+                ) {
+                  return university
+                }
+              })
+              .map((university, index) => {
+                return (
+                  <React.Fragment key={index}>
+                    <Item university={university} country={country} />
+                  </React.Fragment>
+                )
+              })
+          }
+        </TableWrapper>
       </Box>
     </>
   )

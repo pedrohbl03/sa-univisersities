@@ -8,7 +8,7 @@ const TableWrapper = ({ children, ...props }) => {
         <Tr>
           <Th>University</Th>
           <Th>Country</Th>
-          <Th>State</Th>
+          <Th>City/State</Th>
           <Th>Website</Th>
           <Th></Th>
         </Tr>

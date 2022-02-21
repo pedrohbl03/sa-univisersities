@@ -17,12 +17,10 @@ const Header = ({ country, ...props }) => {
             <BreadcrumbLink href='/app'>HOME</BreadcrumbLink>
           </BreadcrumbItem>
 
-          <BreadcrumbItem>
-            <BreadcrumbLink href='/app'>RESULT</BreadcrumbLink>
-          </BreadcrumbItem>
-
           <BreadcrumbItem isCurrentPage>
-            <BreadcrumbLink href={`/app/result/${country}`}>{country.toUpperCase()}</BreadcrumbLink>
+            <Text>
+              {country.toUpperCase()}
+            </Text>
           </BreadcrumbItem>
         </Breadcrumb>
       </Flex>

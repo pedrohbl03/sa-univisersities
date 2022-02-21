@@ -10,11 +10,23 @@ const SectionFavorite = ({ ...props }) => {
   const { favorites } = React.useContext(AuthContext)
 
   return (
-    <Flex p={3} {...props} flexDirection="column" overflowY="auto">
-      <Box maxHeight="300px">
+    <Flex p={3} {...props} flexDirection="column">
         <Box>
           <Heading as="h3" pb={3} size="sm">Your favorites universities</Heading>
         </Box>
+      <Box maxHeight="300px" flexDirection="column" overflowY="auto" sx={{
+        '&::-webkit-scrollbar': {
+          width: '4px',
+        },
+        '&::-webkit-scrollbar-track': {
+          width: '6px',
+          background: '#B8B8B8',
+          borderRadius: '30px'
+        },
+        '&::-webkit-scrollbar-thumb': {
+          background: "gray.100",
+          borderRadius: '30px',
+        }}}>
         <Box>
           {favorites && favorites.length === 0 ? (
             <Flex alignItems="center" justifyContent="center">

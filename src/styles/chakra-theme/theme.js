@@ -5,7 +5,7 @@ import { mode } from "@chakra-ui/theme-tools"
 const theme = extendTheme({
   styles: {
     global: (props) => ({
-      'body, html': {
+      body: {
         bg: mode('white', 'white')(props),
         textDecoration: 'none',
         '&::-webkit-scrollbar': {
